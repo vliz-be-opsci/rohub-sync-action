@@ -1,0 +1,12 @@
+name: "ROHub Sync Action"
+description: "A GitHub Action to make/sync up with a rohub resource"
+inputs:
+  rohub-user:
+    description: "ROHub user token"
+    required: true
+  rohub-password:
+    description: "ROHub password token"
+    required: true
+runs:
+  using: "python"
+  main: "main.py"
