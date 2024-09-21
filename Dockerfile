@@ -12,7 +12,6 @@ FROM cicirello/pyaction:4
 # FROM ghcr.io/cicirello/pyaction:4
 # FROM ghcr.io/cicirello/pyaction:3
 
-RUN chmod +x /entrypoint.py
 COPY entrypoint.py /entrypoint.py
 COPY requirements.txt /requirements.txt
 
