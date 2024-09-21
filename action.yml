@@ -8,5 +8,8 @@ inputs:
     description: "ROHub password token"
     required: true
 runs:
-  using: "python"
-  main: "main.py"
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.rohub-user }}
+    - ${{ inputs.rohub-password }}

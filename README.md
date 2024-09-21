@@ -18,7 +18,7 @@ jobs:
         - uses: actions/checkout@v2
         - uses: vliz-be-opsci/rohub-sync-action@latest
         with:
-            rohub-user: ${{ secrets.ROHUB_TOKEN }}
+            rohub-user: ${{ secrets.ROHUB_USER }}
             rohub-password: ${{ secrets.ROHUB_PASSWORD }}
     ```
 ````
