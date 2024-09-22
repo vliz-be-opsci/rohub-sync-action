@@ -23,4 +23,7 @@ RUN ls -la
 # give permission to execute the entrypoint
 RUN chmod +x /entrypoint.py
 
+# install the required packages
+RUN pip install -r /requirements.txt
+
 ENTRYPOINT ["/entrypoint.py"]
