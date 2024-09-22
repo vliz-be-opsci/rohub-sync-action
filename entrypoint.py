@@ -5,6 +5,7 @@ import os
 import zipfile
 import pathlib
 import sys
+import pandas as pd
 from dotenv import load_dotenv
 
 
@@ -41,8 +42,10 @@ def main():
         pd = pathlib.Path(__file__).parent
         try:
             print("Creating a new ROHub project...")
-            ro_object = rohub.ros_create(repo_name, ["earth sciences"])
-            rohub_id = ro_object["identifier"]
+            rohub.ros_create(repo_name, ["earth sciences"])
+
+            rohub_id = get_rohub_id()
+
             print(f"Created a new ROHub project with ID {rohub_id}")
 
             # create a zip file for the rocrate
@@ -82,13 +85,14 @@ def main():
 
 
 def get_rohub_id():
-    # get the rohub id from the rocrate-metadata.ldjson file
-    with open("rocrate-metadata.ldjson", "r") as f:
-        metadata = json.load(f)
-    graph = metadata["@graph"]
-    for item in graph:
-        if item["@id"] == "./":
-            return item["identifier"].split("/")[-1]
+    repo_name = os.getenv("GITHUB_REPOSITORY")
+    # search rohub for the project
+    projects_df = rohub.list_my_ros()
+
+    # search df for project by filtering on title
+    rohub_project = projects_df[projects_df["title"] == repo_name]
+    rohub_id = rohub_project["identifier"]
+    return rohub_id
 
 
 if __name__ == "__main__":
