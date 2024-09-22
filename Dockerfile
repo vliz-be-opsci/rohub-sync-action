@@ -12,13 +12,15 @@ FROM cicirello/pyaction:4
 # FROM ghcr.io/cicirello/pyaction:4
 # FROM ghcr.io/cicirello/pyaction:3
 
-# give permission to execute the entrypoint
-RUN chmod +x /entrypoint.py
+
 
 COPY entrypoint.py /entrypoint.py
 COPY requirements.txt /requirements.txt
 
 # echo all files in the current directory
 RUN ls -la
+
+# give permission to execute the entrypoint
+RUN chmod +x /entrypoint.py
 
 ENTRYPOINT ["/entrypoint.py"]
