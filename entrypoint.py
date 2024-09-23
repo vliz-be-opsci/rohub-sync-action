@@ -86,6 +86,12 @@ def main():
         except Exception as e:
             print(f"::error::Failed to create a new ROHub project: {e}")
             return
+        # Generate the URL for the ROHub crate
+        rohub_url = get_rohub_url(rohub_id)
+        # Append the button to the README file
+        readme_path = os.path.join(pd, "README.md")
+        with open(readme_path, "a") as readme_file:
+            readme_file.write(f"\n\n[![ROHub Crate](https://img.shields.io/badge/ROHub-Crate-blue)]({rohub_url})\n")
 
     print(rohub_id)
     # get the rocrate metadata jsonld file
@@ -96,6 +102,11 @@ def main():
     except Exception as e:
         print(f"::error::Failed to export to rocrate: {e}")
         return
+
+
+def get_rohub_url(rohub_id):
+    # Generate the URL for the ROHub crate
+    return f"https://rohub.org/{rohub_id}"
 
 
 def get_rohub_id():
