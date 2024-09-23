@@ -76,7 +76,8 @@ def main():
             zipf.close()
 
             # add the zip file to the ro project
-            path_to_zip = pd / "demo_rohub.zip"
+            # make sure pd is a pathlib object
+            path_to_zip = pathlib.Path(pd) / "demo_rohub.zip"
             rohub.ros_upload_resources(rohub_id, path_to_zip)
 
             # delete the zip file
