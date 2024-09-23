@@ -114,6 +114,8 @@ def get_rohub_url(rohub_id):
 
 def get_rohub_id():
     repo_name = os.getenv("GITHUB_REPOSITORY")
+    repo_name = repo_name.split("/")[-1]
+    print(f"Repository name: {repo_name}")
     # search rohub for the project
     projects_df = rohub.list_my_ros()
 
