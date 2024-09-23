@@ -128,7 +128,7 @@ def get_rohub_id():
     # search df for project by filtering on title
     rohub_project = projects_df[projects_df["title"] == repo_name]
     print(rohub_project)
-    rohub_id = rohub_project["identifier"]
+    rohub_id = rohub_project["identifier"][0]
     return rohub_id
 
 
