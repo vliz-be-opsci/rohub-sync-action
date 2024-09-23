@@ -91,7 +91,9 @@ def main():
         # Append the button to the README file
         readme_path = os.path.join(pd, "README.md")
         with open(readme_path, "a") as readme_file:
-            readme_file.write(f"\n\n[![ROHub Crate](https://img.shields.io/badge/ROHub-Crate-blue)]({rohub_url})\n")
+            readme_file.write(
+                f"\n\n[![ROHub Crate](https://img.shields.io/badge/ROHub-Crate-blue)]({rohub_url})\n"
+            )
 
     print(rohub_id)
     # get the rocrate metadata jsonld file
@@ -113,6 +115,8 @@ def get_rohub_id():
     repo_name = os.getenv("GITHUB_REPOSITORY")
     # search rohub for the project
     projects_df = rohub.list_my_ros()
+
+    print(projects_df)
 
     # search df for project by filtering on title
     rohub_project = projects_df[projects_df["title"] == repo_name]
