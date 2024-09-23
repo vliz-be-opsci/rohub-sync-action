@@ -78,7 +78,7 @@ def main():
             # add the zip file to the ro project
             # make sure pd is a pathlib object
             path_to_zip = pathlib.Path(pd) / "demo_rohub.zip"
-            rohub.ros_upload_resources(rohub_id, path_to_zip)
+            rohub.ros_upload_resources(rohub_id, str(path_to_zip))
 
             # delete the zip file
             os.remove(path_to_zip)
@@ -88,6 +88,7 @@ def main():
             return
         # Generate the URL for the ROHub crate
         rohub_url = get_rohub_url(rohub_id)
+        print(f"ROHub URL: {rohub_url}")
         # Append the button to the README file
         readme_path = os.path.join(pd, "README.md")
         with open(readme_path, "a") as readme_file:
@@ -124,6 +125,7 @@ def get_rohub_id():
 
     # search df for project by filtering on title
     rohub_project = projects_df[projects_df["title"] == repo_name]
+    print(rohub_project)
     rohub_id = rohub_project["identifier"]
     return rohub_id
 
