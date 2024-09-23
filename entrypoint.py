@@ -16,9 +16,12 @@ def main():
     # list all files in the directory
     files = os.listdir(pd)
     print(files)
-    
-    #print cwd
+
+    # print cwd
     print(os.getcwd())
+
+    # list the files in the current directory
+    print(os.listdir(os.getcwd()))
 
     """
     # get all inputs from the action
