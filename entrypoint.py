@@ -23,7 +23,6 @@ def main():
     # list the files in the current directory
     print(os.listdir(os.getcwd()))
 
-    """
     # get all inputs from the action
     rohub_user = (
         sys.argv[1] if len(sys.argv) > 1 else os.environ.get("INPUT_ROHUB-USER")
@@ -53,7 +52,7 @@ def main():
         repo_name = repo_name.split("/")[-1]
         print(f"Repository name: {repo_name}")
         # create a new ROHub project
-        pd = pathlib.Path(__file__).parent
+        pd = os.getcwd()
         try:
             print("Creating a new ROHub project...")
             rohub.ros_create(repo_name, ["earth sciences"])
@@ -96,7 +95,6 @@ def main():
     except Exception as e:
         print(f"::error::Failed to export to rocrate: {e}")
         return
-    """
 
 
 def get_rohub_id():
