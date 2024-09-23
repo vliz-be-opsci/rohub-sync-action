@@ -10,6 +10,17 @@ from dotenv import load_dotenv
 
 
 def main():
+
+    pd = pathlib.Path(__file__).parent
+
+    # list all files in the directory
+    files = os.listdir(pd)
+    print(files)
+    
+    #print cwd
+    print(os.getcwd())
+
+    """
     # get all inputs from the action
     rohub_user = (
         sys.argv[1] if len(sys.argv) > 1 else os.environ.get("INPUT_ROHUB-USER")
@@ -82,6 +93,7 @@ def main():
     except Exception as e:
         print(f"::error::Failed to export to rocrate: {e}")
         return
+    """
 
 
 def get_rohub_id():
